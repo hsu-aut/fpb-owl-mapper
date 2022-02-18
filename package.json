@@ -1,0 +1,25 @@
+{
+  "name": "FPB-OWL-Mapper",
+  "version": "1.0.0",
+  "description": "A mapping application to automatically transfer an FPB json export into an FPB ontology",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"build": "tsc"
+  },
+  "files": ["lib/**/*"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsu-aut/fpb-owl-mapper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hsu-aut/fpb-owl-mapper/issues"
+  },
+  "homepage": "https://github.com/hsu-aut/fpb-owl-mapper#readme",
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  }
+}
