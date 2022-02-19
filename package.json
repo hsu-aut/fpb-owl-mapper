@@ -4,6 +4,7 @@
 	"description": "A mapping application to automatically transfer an FPB json export into an FPB ontology",
 	"main": "index.js",
 	"scripts": {
+		"lint": "eslint src --ext .ts",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "tsc"
 	},
