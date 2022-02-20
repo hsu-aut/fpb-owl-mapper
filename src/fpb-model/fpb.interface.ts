@@ -19,7 +19,7 @@ export interface FpbProject {
 
 export interface BaseElement {
 	id: string;
-	name?: string;
+	name?: string;									// This is not corresponding to the schema, but examples show that every base may have a name
 	ProjectAssignment?: string; 					// This is a reference to a Project id,
 }
 
