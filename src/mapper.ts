@@ -4,7 +4,7 @@ import { example } from "./fpb-model/simpleExamples";
 import { test2 } from "./fpb-model/test2";
 
 // Note: Should the serialized version with all the references first be deserialized?
-function map(fpbJson: FpbJsModel, individualsNamespace = "http://www.hsu-hh.de/aut/ontologies/example"): string {
+export function map(fpbJson: FpbJsModel, individualsNamespace = "http://www.hsu-hh.de/aut/ontologies/example"): string {
     let fpbOntology = setupDocument(individualsNamespace);
     // get all processes
     const processContainers = fpbJson.filter(elem => elem.hasOwnProperty("process")) as ProcessContainer[];
@@ -32,9 +32,7 @@ function setupDocument(individualsNamespace: string): string {
 
 
 function createProcessContainers(processContainers: Array<ProcessContainer>): string {
-    let mappedFpbOntology = "\n";
-    
-	
+    let mappedFpbOntology = "";
     processContainers.forEach(pC => {
         // Create process
         const process = pC.process;
@@ -64,7 +62,7 @@ function createProcessContainers(processContainers: Array<ProcessContainer>): st
 
         });
         // Add an empty lines after each process operator
-        mappedFpbOntology += "\n\n";
+        mappedFpbOntology += "\n";
 
         // Add technical resources and their connection to a processOperator
         const technicalResources = pC.elementDataInformation.filter(elem => elem.$type == `fpb:TechnicalResource`) as TechnicalResource[];
@@ -235,12 +233,12 @@ enum FpbStateType {
 
 
 
-/**
- * Testing area
- */
-const e = example;
-const res = map(e);
+// /**
+//  * Testing area
+//  */
+// const e = example;
+// const res = map(e);
 
-console.log("\nresult:");
-console.log(res);
+// console.log("\nresult:");
+// console.log(res);
 
