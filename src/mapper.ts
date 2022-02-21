@@ -32,48 +32,49 @@ function setupDocument(individualsNamespace: string): string {
 
 
 function createProcessContainers(processContainers: Array<ProcessContainer>): string {
-    let processes = "\n";
+    let mappedFpbOntology = "\n";
     
 	
     processContainers.forEach(pC => {
         // Create process
-        const processIri = createIri(pC.process);
-        processes += `${processIri} a VDI3682:Process.\n`;
+        const process = pC.process;
+        const processIri = createIri(process);
+        mappedFpbOntology += `${processIri} a VDI3682:Process.\n`;
 
         // Create process operators of this process
         const processOperators = pC.elementDataInformation.filter(elem => elem.$type == "fpb:ProcessOperator") as ProcessOperator[];
         processOperators.forEach(pO => {
             const processOperatorIri = createIri(pO);
-        	processes += `${processOperatorIri} a VDI3682:ProcessOperator.\n`;
-            processes += `${processIri} VDI3682:consistsOf ${processOperatorIri}.\n`;
+        	mappedFpbOntology += `${processOperatorIri} a VDI3682:ProcessOperator.\n`;
+            mappedFpbOntology += `${processIri} VDI3682:consistsOf ${processOperatorIri}.\n`;
 
             // Add all inputs (Note that process operator only has a list of references that need to be dereferenced first)
             pO.incoming.forEach(inputId => {
                 const inputElement = findInput(pC.elementDataInformation, inputId);
                 const inputIri = createIri(inputElement);
-                processes += `${processOperatorIri} VDI3682:hasInput ${inputIri}.\n`;
+                mappedFpbOntology += `${processOperatorIri} VDI3682:hasInput ${inputIri}.\n`;
             });
 
             // Add all outputs (Note that process operator only has a list of references that need to be dereferenced first)
             pO.outgoing.forEach(outputId => {
                 const outputElement = findOutput(pC.elementDataInformation, outputId);
                 const inputIri = createIri(outputElement);
-                processes += `${processOperatorIri} VDI3682:hasOutput ${inputIri}.\n`;
+                mappedFpbOntology += `${processOperatorIri} VDI3682:hasOutput ${inputIri}.\n`;
             });
 
         });
         // Add an empty lines after each process operator
-        processes += "\n\n";
+        mappedFpbOntology += "\n\n";
 
         // Add technical resources and their connection to a processOperator
         const technicalResources = pC.elementDataInformation.filter(elem => elem.$type == `fpb:TechnicalResource`) as TechnicalResource[];
         technicalResources.forEach(tR => {
             const resourceIri = createIri(tR);
-            processes += `${resourceIri} a VDI3682:TechnicalResource.\n`;
+            mappedFpbOntology += `${resourceIri} a VDI3682:TechnicalResource.\n`;
             tR.isAssignedTo.forEach(assignedOperatorId => {
                 const assignedProcessOperator = findElement(processOperators, assignedOperatorId);
                 const assignedProcessOperatorIri = createIri(assignedProcessOperator);
-                processes += `${resourceIri} VDI3682:isAssignedTo ${assignedProcessOperatorIri}.\n`;
+                mappedFpbOntology += `${resourceIri} VDI3682:isAssignedTo ${assignedProcessOperatorIri}.\n`;
             });
 			
         });
@@ -81,37 +82,48 @@ function createProcessContainers(processContainers: Array<ProcessContainer>): st
         // Create all state elements (i.e., product, energy, information) of this process
         for (const fpbStateType in FpbStateType) {
             const states = pC.elementDataInformation.filter(elem => elem.$type == `fpb:${fpbStateType}`) as State[];
-            processes += createStateIndividuals(states, FpbStateType[fpbStateType as keyof typeof FpbStateType]);
+            mappedFpbOntology += createStateIndividuals(states, FpbStateType[fpbStateType as keyof typeof FpbStateType]);
         }
 		
-        console.log("finding inputs");
-        const states = pC.elementDataInformation.filter(elem => elem.$type == "fpb:Energy");
-        console.log(states);
-        console.log("*********");
-		
-
         // If inputs are on system limit, they need to be set as inputs / outputs of the process
         const processInOuts = getProcessInOuts(pC);
         processInOuts.inputs.forEach(processInput => {
             const processInputIri = createIri(processInput);
-            processes += `${processIri} VDI3682:hasInput ${processInputIri}.\n`;
+            mappedFpbOntology += `${processIri} VDI3682:hasInput ${processInputIri}.\n`;
         });
 
         processInOuts.outputs.forEach(processOutput => {
             const processOutputIri = createIri(processOutput);
-            processes += `${processIri} VDI3682:hasOutput ${processOutputIri}.\n`;
+            mappedFpbOntology += `${processIri} VDI3682:hasOutput ${processOutputIri}.\n`;
         });
 
         // Create system limit
         const systemLimit = pC.elementDataInformation.find(elem => elem.$type == `fpb:SystemLimit`) as SystemLimit;
         const systemLimitIri = createIri(systemLimit);
-        processes += `${systemLimitIri} a VDI3682:SystemLimit.\n`;
-        processes += `${processIri} VDI3682:consistsOf ${systemLimitIri}.\n`;
+        mappedFpbOntology += `${systemLimitIri} a VDI3682:SystemLimit.\n`;
+        mappedFpbOntology += `${processIri} VDI3682:consistsOf ${systemLimitIri}.\n`;
 
-        // Add two empty lines after each process
-        processes += "\n\n";
+
+        // If process is a decomposed operator, create connection between upper process operator and all this process' operators
+        const otherProcessContainers = processContainers.filter(pC => pC.process.id != process.id);		// get all other processes
+        if (process.isDecomposedProcessOperator != null) {
+            const otherProcessElements = otherProcessContainers.flatMap(otherPCs => otherPCs.elementDataInformation);
+            const upperOperator = findElement(otherProcessElements, process.isDecomposedProcessOperator);
+            const upperOperatorIri = createIri(upperOperator);
+
+            const operatorsOfThisProcess = pC.elementDataInformation.filter(elem => elem.$type == "fpb:ProcessOperator"); 
+			
+            operatorsOfThisProcess.forEach(subOperator => {
+                const subOperatorIri = createIri(subOperator);
+                mappedFpbOntology += `${upperOperatorIri} VDI3682:isComposedOf ${subOperatorIri}.\n`;
+            });
+			
+        }
+
+        // Add empty line after each process
+        mappedFpbOntology += "\n";
     });
-    return processes;
+    return mappedFpbOntology;
 }
 
 /**
@@ -226,7 +238,7 @@ enum FpbStateType {
 /**
  * Testing area
  */
-const e = test2;
+const e = example;
 const res = map(e);
 
 console.log("\nresult:");
