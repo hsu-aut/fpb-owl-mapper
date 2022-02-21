@@ -23,6 +23,7 @@
 	},
 	"homepage": "https://github.com/hsu-aut/fpb-owl-mapper#readme",
 	"devDependencies": {
+		"@types/figlet": "^1.5.4",
 		"@types/node": "^17.0.18",
 		"@types/yargs": "^17.0.8",
 		"@typescript-eslint/eslint-plugin": "^2.23.0",
@@ -34,6 +35,7 @@
 		"typescript": "^4.5.5"
 	},
 	"dependencies": {
+		"figlet": "^1.5.2",
 		"yargs": "^17.3.1"
 	}
 }
