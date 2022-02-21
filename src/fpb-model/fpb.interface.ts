@@ -7,7 +7,7 @@ export interface ProcessContainer {
 	process: Process;
 	elementDataInformation: Array<Usage | SystemLimit | TechnicalResource | Flow | AlternativeFlow | 
 									ParallelFlow | Product | Energy | Information | ProcessOperator>;
-	elementVisualInformation: any;		// Note: visual information not considered
+	elementVisualInformation: Array<NodeVisualElement | FlowVisualElement>;
 }
 
 export interface FpbProject {
@@ -116,12 +116,38 @@ export interface Identification {
 }
 
 
-
-
-// TODO: Not implemented yet
+// TODO: Not really modelled yet
 export interface Characteristic {
 	$type: "fpbch:Characteristics";
 	category: any;
 	descriptiveElement: any;
 	relationalElement: any;
+}
+
+
+
+/**
+ * Start of visual information. Currently just very simply done to cover basic type of all visu elements
+ */
+
+export interface BaseVisualElement {
+	id: string;		// Note that this ID conforms to the corresponding element
+	type: string;
+}
+export interface NodeVisualElement extends BaseVisualElement {
+	width: number;
+	height: number;
+	x: number;
+	y: number;
+}
+
+export interface FlowVisualElement extends BaseVisualElement {
+	waypoints: {
+			x: number;
+			y: number;
+			original?: {
+				x: number;
+				y: number;
+			};
+	} [];
 }
