@@ -1,7 +1,4 @@
-import { anotherTest } from "./fpb-model/anotherTest";
-import { BaseElement, Energy, Flow, FpbJsModel, Information, NodeVisualElement, ProcessContainer, ProcessOperator, Product, State, SystemLimit, TechnicalResource } from "./fpb-model/fpb.interface";
-import { example } from "./fpb-model/simpleExamples";
-import { test2 } from "./fpb-model/test2";
+import { BaseElement, Flow, FpbJsModel, NodeVisualElement, ProcessContainer, ProcessOperator, State, SystemLimit, TechnicalResource } from "./fpb.interface";
 
 // Note: Should the serialized version with all the references first be deserialized?
 export function map(fpbJson: FpbJsModel, individualsNamespace = "http://www.hsu-hh.de/aut/ontologies/example"): string {
@@ -229,16 +226,3 @@ enum FpbStateType {
 	Information = "VDI3682:Information",
 	Energy = "VDI3682:Energy",
 }
-
-
-
-
-// /**
-//  * Testing area
-//  */
-// const e = example;
-// const res = map(e);
-
-// console.log("\nresult:");
-// console.log(res);
-
