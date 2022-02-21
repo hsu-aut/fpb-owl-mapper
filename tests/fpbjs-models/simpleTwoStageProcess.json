@@ -1,6 +1,4 @@
-import { FpbJsModel } from "./fpb.interface";
-
-export const example: FpbJsModel = [
+[
     {
         "$type": "fpb:Project",
         "name": "FPBJS_Project",
@@ -12,7 +10,9 @@ export const example: FpbJsModel = [
             "$type": "fpb:Process",
             "id": "cec58f37-5871-46d8-938d-29fdc856302c",
             "elementsContainer": [
-                "fca5c759-b677-4cbf-8600-6d28591737d7"
+                "fca5c759-b677-4cbf-8600-6d28591737d7",
+                "3704a0cf-582e-4159-8c33-611cfb03fc0e",
+                "10be94ee-9cf3-4f07-bcc8-9a0417830b4b"
             ],
             "isDecomposedProcessOperator": null,
             "consistsOfStates": [
@@ -38,6 +38,33 @@ export const example: FpbJsModel = [
                     "0cf3c635-07d3-470e-8dfe-d778cadfb5cf",
                     "bc313958-c9cb-4a37-a77d-43bec79a3eed"
                 ]
+            },
+            {
+                "$type": "fpb:TechnicalResource",
+                "id": "3704a0cf-582e-4159-8c33-611cfb03fc0e",
+                "identification": {
+                    "$type": "fpb:Identification",
+                    "uniqueIdent": "3704a0cf-582e-4159-8c33-611cfb03fc0e",
+                    "longName": "",
+                    "shortName": "TR1",
+                    "versionNumber": "",
+                    "revisionNumber": ""
+                },
+                "isAssignedTo": [
+                    "0cf3c635-07d3-470e-8dfe-d778cadfb5cf"
+                ],
+                "incoming": [],
+                "outgoing": [
+                    "10be94ee-9cf3-4f07-bcc8-9a0417830b4b"
+                ],
+                "characteristics": [],
+                "name": "TR1"
+            },
+            {
+                "$type": "fpb:Usage",
+                "id": "10be94ee-9cf3-4f07-bcc8-9a0417830b4b",
+                "sourceRef": "3704a0cf-582e-4159-8c33-611cfb03fc0e",
+                "targetRef": "0cf3c635-07d3-470e-8dfe-d778cadfb5cf"
             },
             {
                 "$type": "fpb:Flow",
@@ -81,14 +108,16 @@ export const example: FpbJsModel = [
                     "versionNumber": "",
                     "revisionNumber": ""
                 },
-                "isAssignedTo": [],
+                "isAssignedTo": [
+                    "3704a0cf-582e-4159-8c33-611cfb03fc0e"
+                ],
                 "incoming": [
-                    "47c84b35-fba4-4a92-9242-0a52f034c918"
+                    "47c84b35-fba4-4a92-9242-0a52f034c918",
+                    "10be94ee-9cf3-4f07-bcc8-9a0417830b4b"
                 ],
                 "outgoing": [
                     "c06082b0-ed69-490b-94cc-4221afe98e6e"
                 ],
-                "decomposedView": "0cf3c635-07d3-470e-8dfe-d778cadfb5cf",
                 "name": "1",
                 "characteristics": [
                     {
@@ -131,7 +160,8 @@ export const example: FpbJsModel = [
                             "regulationsForRelationalGeneration": "qwe"
                         }
                     }
-                ]
+                ],
+                "decomposedView": "0cf3c635-07d3-470e-8dfe-d778cadfb5cf"
             },
             {
                 "$type": "fpb:Product",
@@ -140,7 +170,7 @@ export const example: FpbJsModel = [
                     "$type": "fpb:Identification",
                     "uniqueIdent": "bc313958-c9cb-4a37-a77d-43bec79a3eed",
                     "longName": "",
-                    "shortName": "",
+                    "shortName": "myTestName",
                     "versionNumber": "",
                     "revisionNumber": ""
                 },
@@ -150,7 +180,8 @@ export const example: FpbJsModel = [
                 "incoming": [
                     "c06082b0-ed69-490b-94cc-4221afe98e6e"
                 ],
-                "outgoing": []
+                "outgoing": [],
+                "name": "myTestName"
             }
         ],
         "elementVisualInformation": [
@@ -161,6 +192,44 @@ export const example: FpbJsModel = [
                 "type": "fpb:SystemLimit",
                 "x": 253,
                 "y": 81
+            },
+            {
+                "id": "3704a0cf-582e-4159-8c33-611cfb03fc0e",
+                "width": 150,
+                "height": 80,
+                "type": "fpb:TechnicalResource",
+                "x": 949,
+                "y": 301
+            },
+            {
+                "id": "10be94ee-9cf3-4f07-bcc8-9a0417830b4b",
+                "type": "fpb:Usage",
+                "waypoints": [
+                    {
+                        "original": {
+                            "x": 949,
+                            "y": 341
+                        },
+                        "x": 949,
+                        "y": 341
+                    },
+                    {
+                        "x": 776,
+                        "y": 341
+                    },
+                    {
+                        "x": 776,
+                        "y": 342
+                    },
+                    {
+                        "original": {
+                            "x": 602,
+                            "y": 342
+                        },
+                        "x": 602,
+                        "y": 342
+                    }
+                ]
             },
             {
                 "id": "47c84b35-fba4-4a92-9242-0a52f034c918",
@@ -253,7 +322,11 @@ export const example: FpbJsModel = [
             "$type": "fpb:Process",
             "id": "0cf3c635-07d3-470e-8dfe-d778cadfb5cf",
             "elementsContainer": [
-                "745077fe-386a-4a2f-bd00-e124f2608294"
+                "745077fe-386a-4a2f-bd00-e124f2608294",
+                "989696de-290b-42b4-9e6d-05e0e93e3469",
+                "ce7d2176-c4e1-42e6-8973-de24fcf9c270",
+                "af206b32-7778-42b8-95e9-e8da1cbd75bb",
+                "a015642f-6e78-4123-97a8-1cd25f720c09"
             ],
             "isDecomposedProcessOperator": "0cf3c635-07d3-470e-8dfe-d778cadfb5cf",
             "consistsOfStates": [
@@ -285,6 +358,60 @@ export const example: FpbJsModel = [
                     "255edf7a-1132-4c5f-9504-d3f88460f5d1"
                 ],
                 "name": "1"
+            },
+            {
+                "$type": "fpb:TechnicalResource",
+                "id": "989696de-290b-42b4-9e6d-05e0e93e3469",
+                "identification": {
+                    "$type": "fpb:Identification",
+                    "uniqueIdent": "989696de-290b-42b4-9e6d-05e0e93e3469",
+                    "longName": "",
+                    "shortName": "TR2",
+                    "versionNumber": "",
+                    "revisionNumber": ""
+                },
+                "isAssignedTo": [
+                    "3243e8c3-c855-43a6-b345-7a0847f57b09"
+                ],
+                "incoming": [],
+                "outgoing": [
+                    "ce7d2176-c4e1-42e6-8973-de24fcf9c270"
+                ],
+                "characteristics": [],
+                "name": "TR2"
+            },
+            {
+                "$type": "fpb:Usage",
+                "id": "ce7d2176-c4e1-42e6-8973-de24fcf9c270",
+                "sourceRef": "989696de-290b-42b4-9e6d-05e0e93e3469",
+                "targetRef": "3243e8c3-c855-43a6-b345-7a0847f57b09"
+            },
+            {
+                "$type": "fpb:TechnicalResource",
+                "id": "af206b32-7778-42b8-95e9-e8da1cbd75bb",
+                "identification": {
+                    "$type": "fpb:Identification",
+                    "uniqueIdent": "af206b32-7778-42b8-95e9-e8da1cbd75bb",
+                    "longName": "",
+                    "shortName": "TR3",
+                    "versionNumber": "",
+                    "revisionNumber": ""
+                },
+                "isAssignedTo": [
+                    "9da9a1f1-2a83-44ba-8176-07dfb01fc3f9"
+                ],
+                "incoming": [],
+                "outgoing": [
+                    "a015642f-6e78-4123-97a8-1cd25f720c09"
+                ],
+                "characteristics": [],
+                "name": "TR3"
+            },
+            {
+                "$type": "fpb:Usage",
+                "id": "a015642f-6e78-4123-97a8-1cd25f720c09",
+                "sourceRef": "af206b32-7778-42b8-95e9-e8da1cbd75bb",
+                "targetRef": "9da9a1f1-2a83-44ba-8176-07dfb01fc3f9"
             },
             {
                 "$type": "fpb:Flow",
@@ -359,14 +486,18 @@ export const example: FpbJsModel = [
                     "versionNumber": "",
                     "revisionNumber": ""
                 },
-                "isAssignedTo": [],
+                "isAssignedTo": [
+                    "989696de-290b-42b4-9e6d-05e0e93e3469"
+                ],
                 "incoming": [
-                    "a612ef50-e787-4943-b9f4-800ce4e66be0"
+                    "a612ef50-e787-4943-b9f4-800ce4e66be0",
+                    "ce7d2176-c4e1-42e6-8973-de24fcf9c270"
                 ],
                 "outgoing": [
                     "6d9acc05-94e3-487d-95a1-805fd20cb13e"
                 ],
-                "name": "2"
+                "name": "2",
+                "characteristics": []
             },
             {
                 "$type": "fpb:ProcessOperator",
@@ -379,9 +510,12 @@ export const example: FpbJsModel = [
                     "versionNumber": "2",
                     "revisionNumber": "3"
                 },
-                "isAssignedTo": [],
+                "isAssignedTo": [
+                    "af206b32-7778-42b8-95e9-e8da1cbd75bb"
+                ],
                 "incoming": [
-                    "d3879d75-ef8e-49b8-8bbb-e0e05970a87b"
+                    "d3879d75-ef8e-49b8-8bbb-e0e05970a87b",
+                    "a015642f-6e78-4123-97a8-1cd25f720c09"
                 ],
                 "outgoing": [
                     "6ffbf3b0-af47-434e-afae-4a25547abef5"
@@ -461,6 +595,82 @@ export const example: FpbJsModel = [
                 "type": "fpb:SystemLimit",
                 "x": 350,
                 "y": 50
+            },
+            {
+                "id": "989696de-290b-42b4-9e6d-05e0e93e3469",
+                "width": 150,
+                "height": 80,
+                "type": "fpb:TechnicalResource",
+                "x": 1020,
+                "y": 145
+            },
+            {
+                "id": "ce7d2176-c4e1-42e6-8973-de24fcf9c270",
+                "type": "fpb:Usage",
+                "waypoints": [
+                    {
+                        "original": {
+                            "x": 1020,
+                            "y": 185
+                        },
+                        "x": 1020,
+                        "y": 185
+                    },
+                    {
+                        "x": 878,
+                        "y": 185
+                    },
+                    {
+                        "x": 878,
+                        "y": 189
+                    },
+                    {
+                        "original": {
+                            "x": 736,
+                            "y": 189
+                        },
+                        "x": 736,
+                        "y": 189
+                    }
+                ]
+            },
+            {
+                "id": "af206b32-7778-42b8-95e9-e8da1cbd75bb",
+                "width": 150,
+                "height": 80,
+                "type": "fpb:TechnicalResource",
+                "x": 1014,
+                "y": 435
+            },
+            {
+                "id": "a015642f-6e78-4123-97a8-1cd25f720c09",
+                "type": "fpb:Usage",
+                "waypoints": [
+                    {
+                        "original": {
+                            "x": 1014,
+                            "y": 475
+                        },
+                        "x": 1014,
+                        "y": 475
+                    },
+                    {
+                        "x": 868,
+                        "y": 475
+                    },
+                    {
+                        "x": 868,
+                        "y": 477
+                    },
+                    {
+                        "original": {
+                            "x": 722,
+                            "y": 477
+                        },
+                        "x": 722,
+                        "y": 477
+                    }
+                ]
             },
             {
                 "id": "a612ef50-e787-4943-b9f4-800ce4e66be0",
@@ -624,4 +834,4 @@ export const example: FpbJsModel = [
             }
         ]
     }
-];
+]
