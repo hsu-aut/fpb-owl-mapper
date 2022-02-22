@@ -1,10 +1,10 @@
 ```
- _____ ____  ____         _____        ___          __  __                             
-|  ___|  _ \| __ )       / _ \ \      / / |        |  \/  | __ _ _ __  _ __   ___ _ __ 
-| |_  | |_) |  _ \ _____| | | \ \ /\ / /| |   _____| |\/| |/ _` | '_ \| '_ \ / _ \ '__|
-|  _| |  __/| |_) |_____| |_| |\ V  V / | |__|_____| |  | | (_| | |_) | |_) |  __/ |   
-|_|   |_|   |____/       \___/  \_/\_/  |_____|    |_|  |_|\__,_| .__/| .__/ \___|_|   
-                                                                |_|   |_|              
+  __       _                         _                                             
+ / _|_ __ | |__         _____      _| |      _ __ ___   __ _ _ __  _ __   ___ _ __ 
+| |_| '_ \| '_ \ _____ / _ \ \ /\ / / |_____| '_ ` _ \ / _` | '_ \| '_ \ / _ \ '__|
+|  _| |_) | |_) |_____| (_) \ V  V /| |_____| | | | | | (_| | |_) | |_) |  __/ |   
+|_| | .__/|_.__/       \___/ \_/\_/ |_|     |_| |_| |_|\__,_| .__/| .__/ \___|_|   
+    |_|                                                     |_|   |_|              
 ```
 # A CLI to convert json FPB models to an FPB ontology
 Formalized Process Description (FPB) is a lightweight process modelling approach standardized in [VDI guideline 3682](https://www.vdi.de/richtlinien/details/vdivde-3682-blatt-1-formalisierte-prozessbeschreibungen-konzept-und-grafische-darstellung). It allows simple modelling of various processes in an intuitive and graphical way.
