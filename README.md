@@ -31,4 +31,18 @@ where
 
 
 ### Inside your own JavaScript / TypeScript projects
-:construnc
+Simply import fpb-owl-mapper into your own npm project using `npm install fpb-owl-mapper`. After installing, you can import and use the map(fpbModel, namespace, ontologyIri) function. Here's a little example:
+
+```JavaScript
+import { map } from "fpb-owl-mapper";
+import * as fs from "fs"
+
+// In this case, the model is read from file. Of course, you could also have a model in your application
+const file =  fs.readFileSync("./exampleProcess.json")
+const fpbJson = JSON.parse(file.toString())
+
+const res = map(fpbJson);
+console.log(res);
+
+// Output will be a long string with the transformed model in .ttl syntax
+```
