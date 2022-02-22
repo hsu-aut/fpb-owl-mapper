@@ -18,6 +18,7 @@ export interface FpbProject {
 }
 
 export interface BaseElement {
+	$type: string;
 	id: string;
 	name?: string;									// This is not corresponding to the schema, but examples show that every base may have a name
 	ProjectAssignment?: string; 					// This is a reference to a Project id,
@@ -40,14 +41,14 @@ export interface SystemLimit extends BaseElement {
 	decomposedViewOf?: string;					// Shall be an id of a Process Operator
 }
 
-export interface Object extends BaseElement {
+export interface FpbObject extends BaseElement {
 	identification: Identification;						// Shall be an id of an Identification
 	characteristics?: Array<Characteristic>;
 	incoming: Array<string>;					// Shall be ids of incoming flows
 	outgoing: Array<string>;					// Shall be ids of outgoing flows
 }
 
-export interface State extends Object {
+export interface State extends FpbObject {
 	isAssignedTo: Array<string>;				// Shall be ids of Process Operators
 }
 
@@ -64,13 +65,13 @@ export interface Information extends State {
 	$type: "fpb:Information";
 }
 
-export interface ProcessOperator extends Object {
+export interface ProcessOperator extends FpbObject {
 	$type: "fpb:ProcessOperator";
 	isAssignedTo: Array<string>;				// Shall be ids of Technical Resources
 	decomposedView?: string;						// Shall be an id of a Process
 }
 
-export interface TechnicalResource extends Object {
+export interface TechnicalResource extends FpbObject {
 	$type: "fpb:TechnicalResource";
 	isAssignedTo: Array<string>;				// Shall be ids of Process Operators
 }
