@@ -2,9 +2,12 @@
 	"compilerOptions": {
 	  "target": "es2021",
 	  "module": "commonjs",
+	  "sourceMap": true,
 	  "declaration": true,
+	  "allowJs": true,
 	  "outDir": "./lib",
-	  "strict": true
+	  "strict": true,
+	  "moduleResolution": "Node",
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "**/__tests__/*"]
