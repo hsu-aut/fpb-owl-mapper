@@ -12,17 +12,12 @@ module.exports = {
             },
         ],
     },
+	target: "node",
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
-		fallback: {
-            "fs": false,
-			"path": false,
-			"util": false,
-			"assert": false
-        },
     },
     output: {
-        filename: 'bundle.js',
+        filename: 'fpb2owl-cli.js',
         path: path.resolve(__dirname, 'dist'),
     },
 };
