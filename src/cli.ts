@@ -1,4 +1,5 @@
-import figlet = require('figlet');
+// import * as figlet from "figlet";
+const font = import("figlet/importable-fonts");
 import { readFileSync, writeFileSync } from 'fs';
 import yargs, { Arguments, Options } from 'yargs';
 import { hideBin } from 'yargs/helpers';
@@ -6,7 +7,7 @@ import { FpbJsModel } from './fpb.interface';
 import { map } from './mapper';
 
 
-const header = figlet.textSync('fpb.js to ODP', { horizontalLayout: 'full' });
+// const header = figlet.textSync('fpb.js to ODP', { horizontalLayout: 'full' });
 
 function handler (argv: Arguments<Options>): void {
     const { filePath, ns } = argv;
@@ -18,7 +19,7 @@ function handler (argv: Arguments<Options>): void {
 }
 
 const argv = yargs(hideBin(process.argv))
-    .usage(header + "\n\n")
+    // .usage(header + "\n\n")
     .usage('Usage: $0 map <filePath> [string] -n [string]')
     .command({
         command: 'map <filePath>', 
