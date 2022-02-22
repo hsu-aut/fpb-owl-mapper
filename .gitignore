@@ -1,5 +1,6 @@
 # Build output
 /lib
+/dist
 
 # Logs
 logs
