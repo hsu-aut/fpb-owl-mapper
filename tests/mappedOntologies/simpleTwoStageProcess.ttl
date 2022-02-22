@@ -1,6 +1,8 @@
+@prefix VDI3682: <http://www.hsu-ifa.de/ontologies/VDI3682#> .
+@prefix in: <http://www.hsu-hh.de/aut/ontologies/fpb-mapping#> .
 
-	@prefix VDI3682: <http://www.hsu-ifa.de/ontologies/VDI3682#> .
-	@prefix in: <http://www.hsu-hh.de/aut/ontologies/example#> .
+<http://www.hsu-hh.de/aut/ontologies/fpb-mapping> rdf:type owl:Ontology ;
+owl:imports <https://raw.githubusercontent.com/hsu-aut/IndustrialStandard-ODP-VDI3682/v2.0.1/VDI3682.owl> .
 
 <urn:uuid:cec58f37-5871-46d8-938d-29fdc856302c> a VDI3682:Process.
 in:1 a VDI3682:ProcessOperator.

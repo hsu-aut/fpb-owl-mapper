@@ -11,7 +11,7 @@ describe('Mapper test', () => {
         const input = JSON.parse(readFileSync("tests/fpbjs-models/simpleTwoStageProcess.json").toString()) as FpbJsModel;
         const expectedResult = readFileSync("tests/mappedOntologies/simpleTwoStageProcess.ttl").toString();
 
-        const result = map(input, "http://www.hsu-hh.de/aut/ontologies/example#");
+        const result = map(input);	// No namespace and ontologyIri given -> should use default
         assert.deepEqual(result, expectedResult, 'Expected result should have all values extracted...');
     });
 
