@@ -6,7 +6,7 @@
 |_| | .__/|_.__/       \___/ \_/\_/ |_|     |_| |_| |_|\__,_| .__/| .__/ \___|_|   
     |_|                                                     |_|   |_|              
 ```
-# A CLI to convert json FPB models to an FPB ontology
+# Convert JSON FPB models into an FPB ontology
 Formalized Process Description (FPB) is a lightweight process modelling approach standardized in [VDI guideline 3682](https://www.vdi.de/richtlinien/details/vdivde-3682-blatt-1-formalisierte-prozessbeschreibungen-konzept-und-grafische-darstellung). It allows simple modelling of various processes in an intuitive and graphical way.
 
 With [fpb.js](https://github.com/HamiedNabizada/FPB.JS), there is a modern, browser-based implementation that can be used to easily model processes according to FPB. It works on a JSON data model. 
