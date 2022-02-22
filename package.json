@@ -1,8 +1,7 @@
 {
-	"name": "FPB-OWL-Mapper",
+	"name": "fpb-owl-mapper",
 	"version": "1.0.0",
-	"description": "A mapping application to automatically transfer an FPB json export into an FPB ontology",
-	"main": "mapper.js",
+	"description": "A mapping application to automatically transfer an FPB json export from fpb.js into an FPB ontology",
 	"scripts": {
 		"lint": "eslint src --ext .ts",
 		"test": "npm run lint && npm run coverage",
@@ -14,17 +13,22 @@
 	"files": [
 		"lib/**/*"
 	],
+	"main": "./lib/mapper.js",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hsu-aut/fpb-owl-mapper.git"
 	},
-	"keywords": [],
-	"author": "",
+	"keywords": ["FPB", "OWL", "Formalized Process Description", "VDI 3682", "Mapping", "Semantic Web"],
+	"author": "Aljosha Koecher",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/hsu-aut/fpb-owl-mapper/issues"
 	},
 	"homepage": "https://github.com/hsu-aut/fpb-owl-mapper#readme",
+	"dependencies": {
+		"figlet": "^1.5.2",
+		"yargs": "^17.3.1"
+	},
 	"devDependencies": {
 		"@types/chai": "^4.2.11",
 		"@types/figlet": "^1.5.4",
@@ -45,9 +49,5 @@
 		"typescript": "^4.5.5",
 		"webpack": "^5.69.1",
 		"webpack-cli": "^4.9.2"
-	},
-	"dependencies": {
-		"figlet": "^1.5.2",
-		"yargs": "^17.3.1"
 	}
 }
