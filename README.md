@@ -14,6 +14,8 @@ In addition to that, there is an ontology that can be used to model processes ac
 
 FPB-OWL-Mapper can automatically transform a JSON FPB model into that FPB ontology.
 
+## Requirements
+Node.js is required. Make sure to download it from [nodejs.org](https://nodejs.org/en/download/) and install it on your machine.
 
 ## Usage
 FPB-OWL-Mapper can be used both as a CLI and by importing it into one of your projects
