@@ -92,29 +92,42 @@ export interface InOuts {
 }
 
 /**
- * Finds an input of a process operator from a flow ID
+ * Finds inputs of a process operator from all incoming flow IDs (only state elements, not technical resources)
  * @param elements List of elements to search within
- * @param incomingFlowId ID of the incoming flow
- * @returns Input with the given ID, undefined if ID doesn't exist
+ * @param incomingFlowId IDs of the incoming flows
+ * @returns All input state elements (i.e., products, energy, information)
  */
-export function findInput(elements: Array<BaseElement>, incomingFlowId: string): State {
-    const incomingFlow = elements.find(elem => elem.id == incomingFlowId) as Flow;
-    const input = elements.find(elem => elem.id === incomingFlow.sourceRef) as State;
-    return input;
+export function findInputs(elements: Array<BaseElement>, incomingIds: Array<string>): Array<State> {
+    const inputs = new Array<State>();
+    incomingIds.forEach(incomingId => {
+        const flow = elements.find(elem => elem.id == incomingId) as Flow;
+        const input = elements.find(elem => elem.id === flow.sourceRef) as BaseElement;
+        if (isStateSubtype(input)) {
+            inputs.push(input as State);
+        }
+    });
+    return inputs;
 }
 
 
 /**
- * Finds an output of a process operator from a flow ID
+ * Finds outputs of a process operator from all outgoing flow IDs (only state elements, not technical resources)
  * @param elements List of elements to search within
- * @param outgoingFlowId ID of the outgoing flow
- * @returns Output with the given ID, undefined if ID doesn't exist
+ * @param outgoingFlowId IDs of the outgoing flows
+ * @returns All output state elements (i.e., products, energy, information)
  */
-export function findOutput(elements: Array<BaseElement>, outgoingFlowId: string): State {
-    const outgoingFlow = elements.find(elem => elem.id == outgoingFlowId) as Flow;
-    const output = elements.find(elem => elem.id === outgoingFlow.targetRef) as State;
-    return output;
+export function findOutputs(elements: Array<BaseElement>, outgoingIds: Array<string>): Array<State> {
+    const outputs = new Array<State>();
+    outgoingIds.forEach(outgoingId => {
+        const flow = elements.find(elem => elem.id == outgoingId) as Flow;
+        const output = elements.find(elem => elem.id === flow.targetRef) as BaseElement;
+        if (isStateSubtype(output)) {
+            outputs.push(output as State);
+        }
+    });
+    return outputs;
 }
+
 
 /**
  * Finds an element with a given ID inside an Array of elements
@@ -149,17 +162,17 @@ export function createProcessContainers(processContainers: Array<ProcessContaine
             mappedFpbOntology += `${processIri} VDI3682:consistsOf ${processOperatorIri}.\n`;
 
             // Add all inputs (Note that process operator only has a list of references that need to be dereferenced first)
-            pO.incoming.forEach(inputId => {
-                const inputElement = findInput(pC.elementDataInformation, inputId);
-                const inputIri = createIri(inputElement);
+            const inputs = findInputs(pC.elementDataInformation, pO.incoming);
+            inputs.forEach(input => {
+                const inputIri = createIri(input);
                 mappedFpbOntology += `${processOperatorIri} VDI3682:hasInput ${inputIri}.\n`;
             });
 
             // Add all outputs (Note that process operator only has a list of references that need to be dereferenced first)
-            pO.outgoing.forEach(outputId => {
-                const outputElement = findOutput(pC.elementDataInformation, outputId);
-                const inputIri = createIri(outputElement);
-                mappedFpbOntology += `${processOperatorIri} VDI3682:hasOutput ${inputIri}.\n`;
+            const outputs = findOutputs(pC.elementDataInformation, pO.outgoing);
+            outputs.forEach(output => {
+                const outputIri = createIri(output);
+                mappedFpbOntology += `${processOperatorIri} VDI3682:hasOutput ${outputIri}.\n`;
             });
 
         });
