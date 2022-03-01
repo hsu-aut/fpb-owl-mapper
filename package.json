@@ -1,6 +1,6 @@
 {
 	"name": "fpb-owl-mapper",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A mapping application to automatically transfer an FPB json export from fpb.js into an FPB ontology",
 	"scripts": {
 		"lint": "eslint src --ext .ts",
