@@ -48,7 +48,7 @@ export function createStateIndividuals(elements: State[], elementType: FpbStateT
     let stateElementString = "";
     elements.forEach(elem => {
         const elemIri = createIri(elem);
-        stateElementString += `${elemIri} a VDI3682:${elementType}.\n`;
+        stateElementString += `${elemIri} a ${elementType}.\n`;
     });
     return stateElementString;
 }
