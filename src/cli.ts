@@ -21,6 +21,7 @@ function handler (argv: Arguments<Options>): void {
     process.exit(0);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const argv = yargs(hideBin(process.argv))
     .usage(header + "\n\n")
     .usage('Usage: $0 map <filePath> [string] -n [string]')

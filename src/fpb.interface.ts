@@ -120,9 +120,9 @@ export interface Identification {
 // TODO: Not really modelled yet
 export interface Characteristic {
 	$type: "fpbch:Characteristics";
-	category: any;
-	descriptiveElement: any;
-	relationalElement: any;
+	category: {};
+	descriptiveElement: {};
+	relationalElement: {};
 }
 
 
