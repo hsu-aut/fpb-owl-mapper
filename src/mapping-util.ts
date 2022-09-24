@@ -196,7 +196,7 @@ export function createProcessContainers(processContainers: Array<ProcessContaine
             tR.isAssignedTo.forEach(assignedOperatorId => {
                 const assignedProcessOperator = findElement(processOperators, assignedOperatorId);
                 const assignedProcessOperatorIri = createIri(assignedProcessOperator);
-                mappedFpbOntology += `${resourceIri} VDI3682:isAssignedTo ${assignedProcessOperatorIri}.\n`;
+                mappedFpbOntology += `${assignedProcessOperatorIri} VDI3682:isAssignedTo ${resourceIri}.\n`;
             });
 			
         });

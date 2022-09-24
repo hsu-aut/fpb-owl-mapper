@@ -2,7 +2,7 @@ import { FpbJsModel, ProcessContainer } from "./fpb.interface";
 import { createProcessContainers, setupDocument } from "./mapping-util";
 
 const defaultNamespace = "http://www.hsu-hh.de/aut/ontologies/fpb-mapping";
-const fpbVersion = "v2.0.1";
+const fpbVersion = "v3.0.0";
 
 /**
  * Formalized Process Description (FPB) is a lightweight modelling technique for processes which is defined in VDI guideline 3682
