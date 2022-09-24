@@ -2,7 +2,7 @@
 @prefix in: <http://www.hsu-hh.de/aut/ontologies/fpb-mapping#> .
 
 <http://www.hsu-hh.de/aut/ontologies/fpb-mapping> rdf:type owl:Ontology ;
-owl:imports <https://raw.githubusercontent.com/hsu-aut/IndustrialStandard-ODP-VDI3682/v2.0.1/VDI3682.owl> .
+owl:imports <https://raw.githubusercontent.com/hsu-aut/IndustrialStandard-ODP-VDI3682/v3.0.1/VDI3682.owl> .
 
 <urn:uuid:7492e4af-725d-4443-8ea4-5efc39f04e89> a VDI3682:Process.
 in:process a VDI3682:ProcessOperator.
@@ -11,7 +11,7 @@ in:process VDI3682:hasInput in:product1.
 in:process VDI3682:hasOutput in:product2.
 
 in:resource a VDI3682:TechnicalResource.
-in:resource VDI3682:isAssignedTo in:process.
+in:process VDI3682:isAssignedTo in:resource.
 in:product1 a VDI3682:Product.
 in:product2 a VDI3682:Product.
 <urn:uuid:18994359-99e0-4a81-b91e-9888fa7a234c> a VDI3682:SystemLimit.

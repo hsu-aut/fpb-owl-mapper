@@ -2,7 +2,7 @@
 @prefix in: <http://www.hsu-hh.de/aut/ontologies/fpb-mapping#> .
 
 <http://www.hsu-hh.de/aut/ontologies/fpb-mapping> rdf:type owl:Ontology ;
-owl:imports <https://raw.githubusercontent.com/hsu-aut/IndustrialStandard-ODP-VDI3682/v2.0.1/VDI3682.owl> .
+owl:imports <https://raw.githubusercontent.com/hsu-aut/IndustrialStandard-ODP-VDI3682/v3.0.1/VDI3682.owl> .
 
 <urn:uuid:cec58f37-5871-46d8-938d-29fdc856302c> a VDI3682:Process.
 in:1 a VDI3682:ProcessOperator.
@@ -11,7 +11,7 @@ in:1 VDI3682:hasInput <urn:uuid:dddd7425-2cb9-4504-bc2d-5efb706ec7a4>.
 in:1 VDI3682:hasOutput in:myTestName.
 
 in:TR1 a VDI3682:TechnicalResource.
-in:TR1 VDI3682:isAssignedTo in:1.
+in:1 VDI3682:isAssignedTo in:TR1.
 <urn:uuid:dddd7425-2cb9-4504-bc2d-5efb706ec7a4> a VDI3682:Product.
 in:myTestName a VDI3682:Product.
 <urn:uuid:cec58f37-5871-46d8-938d-29fdc856302c> VDI3682:hasInput <urn:uuid:dddd7425-2cb9-4504-bc2d-5efb706ec7a4>.
@@ -30,9 +30,9 @@ in:3 VDI3682:hasInput <urn:uuid:255edf7a-1132-4c5f-9504-d3f88460f5d1>.
 in:3 VDI3682:hasOutput <urn:uuid:bc313958-c9cb-4a37-a77d-43bec79a3eed>.
 
 in:TR2 a VDI3682:TechnicalResource.
-in:TR2 VDI3682:isAssignedTo in:2.
+in:2 VDI3682:isAssignedTo in:TR2.
 in:TR3 a VDI3682:TechnicalResource.
-in:TR3 VDI3682:isAssignedTo in:3.
+in:3 VDI3682:isAssignedTo in:TR3.
 <urn:uuid:dddd7425-2cb9-4504-bc2d-5efb706ec7a4> a VDI3682:Product.
 <urn:uuid:bc313958-c9cb-4a37-a77d-43bec79a3eed> a VDI3682:Product.
 <urn:uuid:255edf7a-1132-4c5f-9504-d3f88460f5d1> a VDI3682:Information.

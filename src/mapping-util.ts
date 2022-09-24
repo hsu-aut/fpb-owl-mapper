@@ -71,7 +71,6 @@ export function getProcessInOuts(pC: ProcessContainer): InOuts {
         systemLimitGraphic = pC.elementVisualInformation.find(visuElem => visuElem.type == "fpb:SystemLimit") as NodeVisualElement;
     } catch (error) {
         // fpd model doesn't contain graphic info, cannot determine process inputs / outputs
-        console.log("fpd model doesn't contain graphic info, cannot determine process inputs / outputs");
         return inoutsOnLimit;
     }
 
