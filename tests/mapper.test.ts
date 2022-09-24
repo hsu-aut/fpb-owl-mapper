@@ -1,13 +1,11 @@
 import { assert } from 'chai';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { FpbJsModel } from '../src/fpb.interface';
 import { map } from "../src/mapper";
 
 
 describe('Mapper test', () => {
     it('Should map a given fpb.js model to the correct ontological representation', async () => {
-        // Object that defines the structure of the result
-
         const input = JSON.parse(readFileSync("tests/fpbjs-models/simpleTwoStageProcess.json").toString()) as FpbJsModel;
         const expectedResult = readFileSync("tests/mappedOntologies/simpleTwoStageProcess.ttl").toString();
 
@@ -15,4 +13,12 @@ describe('Mapper test', () => {
         assert.deepEqual(result, expectedResult, 'Expected result should have all values extracted...');
     });
 
+
+    it('Should map a very simple process with one operator without graphics information', async () => {
+        const input = JSON.parse(readFileSync("tests/fpbjs-models/simpleProcessWithoutGraphics.json").toString()) as FpbJsModel;
+        const expectedResult = readFileSync("tests/mappedOntologies/simpleProcessWithoutGraphics.ttl").toString();
+		
+        const result = map(input);
+        assert.deepEqual(result, expectedResult, "Should map process without graphics");
+    });
 });

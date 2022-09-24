@@ -1,0 +1,143 @@
+[
+    {
+        "$type": "fpb:Project",
+        "name": "FPBJS_Project",
+        "targetNamespace": "http://www.hsu-ifa.de/fpbjs",
+        "entryPoint": "7492e4af-725d-4443-8ea4-5efc39f04e89"
+    },
+    {
+        "process": {
+            "$type": "fpb:Process",
+            "id": "7492e4af-725d-4443-8ea4-5efc39f04e89",
+            "elementsContainer": [
+                "960b18aa-d3f1-49fe-8034-83db2ff063a1",
+                "83780295-1cb1-438f-adfb-35b0f49ebfe7",
+                "18994359-99e0-4a81-b91e-9888fa7a234c"
+            ],
+            "isDecomposedProcessOperator": null,
+            "consistsOfStates": [
+                "df0c7d31-713f-498e-a875-bcc462d06737",
+                "671c2042-497f-4e30-98d3-57f0fc39b789"
+            ],
+            "consistsOfSystemLimit": "18994359-99e0-4a81-b91e-9888fa7a234c",
+            "consistsOfProcesses": [],
+            "consistsOfProcessOperator": [
+                "46c378ce-d863-4016-a5a1-6a09e9fa154d"
+            ]
+        },
+        "elementDataInformation": [
+            {
+                "$type": "fpb:TechnicalResource",
+                "id": "960b18aa-d3f1-49fe-8034-83db2ff063a1",
+                "identification": {
+                    "$type": "fpb:Identification",
+                    "uniqueIdent": "960b18aa-d3f1-49fe-8034-83db2ff063a1",
+                    "longName": "",
+                    "shortName": "resource",
+                    "versionNumber": "",
+                    "revisionNumber": ""
+                },
+                "isAssignedTo": [
+                    "46c378ce-d863-4016-a5a1-6a09e9fa154d"
+                ],
+                "incoming": [],
+                "outgoing": [
+                    "83780295-1cb1-438f-adfb-35b0f49ebfe7"
+                ],
+                "name": "resource"
+            },
+            {
+                "$type": "fpb:Usage",
+                "id": "83780295-1cb1-438f-adfb-35b0f49ebfe7",
+                "sourceRef": "960b18aa-d3f1-49fe-8034-83db2ff063a1",
+                "targetRef": "46c378ce-d863-4016-a5a1-6a09e9fa154d"
+            },
+            {
+                "$type": "fpb:SystemLimit",
+                "id": "18994359-99e0-4a81-b91e-9888fa7a234c",
+                "elementsContainer": [
+                    "32613f98-ccaa-4890-8cb7-6ac6d52b88e5",
+                    "2fdffc48-1fd2-4372-81e7-3fbcab573167",
+                    "df0c7d31-713f-498e-a875-bcc462d06737",
+                    "46c378ce-d863-4016-a5a1-6a09e9fa154d",
+                    "671c2042-497f-4e30-98d3-57f0fc39b789"
+                ]
+            },
+            {
+                "$type": "fpb:Flow",
+                "id": "32613f98-ccaa-4890-8cb7-6ac6d52b88e5",
+                "sourceRef": "df0c7d31-713f-498e-a875-bcc462d06737",
+                "targetRef": "46c378ce-d863-4016-a5a1-6a09e9fa154d"
+            },
+            {
+                "$type": "fpb:Flow",
+                "id": "2fdffc48-1fd2-4372-81e7-3fbcab573167",
+                "sourceRef": "46c378ce-d863-4016-a5a1-6a09e9fa154d",
+                "targetRef": "671c2042-497f-4e30-98d3-57f0fc39b789"
+            },
+            {
+                "$type": "fpb:Product",
+                "id": "df0c7d31-713f-498e-a875-bcc462d06737",
+                "identification": {
+                    "$type": "fpb:Identification",
+                    "uniqueIdent": "df0c7d31-713f-498e-a875-bcc462d06737",
+                    "longName": "",
+                    "shortName": "product1",
+                    "versionNumber": "",
+                    "revisionNumber": ""
+                },
+                "isAssignedTo": [
+                    "46c378ce-d863-4016-a5a1-6a09e9fa154d"
+                ],
+                "incoming": [],
+                "outgoing": [
+                    "32613f98-ccaa-4890-8cb7-6ac6d52b88e5"
+                ],
+                "name": "product1"
+            },
+            {
+                "$type": "fpb:ProcessOperator",
+                "id": "46c378ce-d863-4016-a5a1-6a09e9fa154d",
+                "identification": {
+                    "$type": "fpb:Identification",
+                    "uniqueIdent": "46c378ce-d863-4016-a5a1-6a09e9fa154d",
+                    "longName": "",
+                    "shortName": "process",
+                    "versionNumber": "",
+                    "revisionNumber": ""
+                },
+                "isAssignedTo": [
+                    "960b18aa-d3f1-49fe-8034-83db2ff063a1"
+                ],
+                "incoming": [
+                    "32613f98-ccaa-4890-8cb7-6ac6d52b88e5",
+                    "83780295-1cb1-438f-adfb-35b0f49ebfe7"
+                ],
+                "outgoing": [
+                    "2fdffc48-1fd2-4372-81e7-3fbcab573167"
+                ],
+                "name": "process"
+            },
+            {
+                "$type": "fpb:Product",
+                "id": "671c2042-497f-4e30-98d3-57f0fc39b789",
+                "identification": {
+                    "$type": "fpb:Identification",
+                    "uniqueIdent": "671c2042-497f-4e30-98d3-57f0fc39b789",
+                    "longName": "",
+                    "shortName": "product2",
+                    "versionNumber": "",
+                    "revisionNumber": ""
+                },
+                "isAssignedTo": [
+                    "46c378ce-d863-4016-a5a1-6a09e9fa154d"
+                ],
+                "incoming": [
+                    "2fdffc48-1fd2-4372-81e7-3fbcab573167"
+                ],
+                "outgoing": [],
+                "name": "product2"
+            }
+        ]
+    }
+]
