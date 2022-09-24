@@ -60,13 +60,22 @@ function isStateSubtype(elem: BaseElement): boolean {
 export function getProcessInOuts(pC: ProcessContainer): InOuts {
     // get all states and filter out the intermediate ones
     const states = pC.elementDataInformation.filter(elem => isStateSubtype(elem)) as State[];
-    const systemLimitGraphic = pC.elementVisualInformation.find(visuElem => visuElem.type == "fpb:SystemLimit") as NodeVisualElement;
-
-    const margin = 5;	// Margin to help decide between on and off system limit
+    // define result object
     const inoutsOnLimit: InOuts = {
         inputs : new Array<State>(),
         outputs : new Array<State>(),
     };
+	
+    let systemLimitGraphic: NodeVisualElement;
+    try {
+        systemLimitGraphic = pC.elementVisualInformation.find(visuElem => visuElem.type == "fpb:SystemLimit") as NodeVisualElement;
+    } catch (error) {
+        // fpd model doesn't contain graphic info, cannot determine process inputs / outputs
+        console.log("fpd model doesn't contain graphic info, cannot determine process inputs / outputs");
+        return inoutsOnLimit;
+    }
+
+    const margin = 5;	// Margin to help decide between on and off system limit
     states.forEach(inout => {
         const inoutGraphic = pC.elementVisualInformation.find(visuElem => visuElem.id == inout.id) as NodeVisualElement;
         const rightOfLeftBorder = (inoutGraphic.x >= systemLimitGraphic.x + margin);
