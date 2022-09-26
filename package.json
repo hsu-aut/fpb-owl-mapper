@@ -8,7 +8,8 @@
 		"test:only": "mocha -r ts-node/register tests/**/*.test.ts",
 		"coverage": "nyc npm run test:only",
 		"build": "tsc",
-		"build-cli": "webpack"
+		"build-cli": "webpack",
+		"prepare": "npm run test && npm run build && npm run build-cli"
 	},
 	"files": [
 		"lib/**/*"
