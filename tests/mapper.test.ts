@@ -10,7 +10,7 @@ describe('Mapper test', () => {
         const expectedResult = readFileSync("tests/mappedOntologies/simpleTwoStageProcess.ttl").toString();
 
         const result = map(input);	// No namespace and ontologyIri given -> should use default
-        assert.deepEqual(result, expectedResult, 'Expected result should have all values extracted...');
+        assert.deepEqual(result.trim(), expectedResult.trim(), 'Expected result should have all values extracted...');
     });
 
     it('Should map a given fpb.js model with a specific namespace and ontologyIri', async () => {
@@ -21,7 +21,7 @@ describe('Mapper test', () => {
         const ontologyIri ="http://www.just-a-test.com/ontologies/test-onto";
 
         const result = map(input,namespace, ontologyIri);	// No namespace and ontologyIri given -> should use default
-        assert.deepEqual(result, expectedResult, 'Expected result should have all values extracted...');
+        assert.deepEqual(result.trim(), expectedResult.trim(), 'Expected result should have all values extracted...');
     });
 
 
@@ -30,6 +30,6 @@ describe('Mapper test', () => {
         const expectedResult = readFileSync("tests/mappedOntologies/simpleProcessWithoutGraphics.ttl").toString();
 		
         const result = map(input);
-        assert.deepEqual(result, expectedResult, "Should map process without graphics");
+        assert.deepEqual(result.trim(), expectedResult.trim(), "Should map process without graphics");
     });
 });

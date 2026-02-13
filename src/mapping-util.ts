@@ -11,11 +11,11 @@ export function setupDocument(individualsNamespace: string, ontologyIri: string,
     if (!(individualsNamespace.endsWith("/") || individualsNamespace.endsWith("#"))) {
         individualsNamespace += "#";
     }
-    let prefixes = "@prefix VDI3682: <http://www.hsu-ifa.de/ontologies/VDI3682#> .\n";
+    let prefixes = "@prefix VDI3682: <http://www.w3id.org/hsu-aut/VDI3682#> .\n";
     prefixes += `@prefix in: <${individualsNamespace}> .\n\n`;
 
     let ontoDef = `<${ontologyIri}> rdf:type owl:Ontology ;\n`;
-    ontoDef += `owl:imports <https://raw.githubusercontent.com/hsu-aut/IndustrialStandard-ODP-VDI3682/${fpbVersion}/VDI3682.owl> .\n\n`;
+    ontoDef += `owl:imports <http://www.w3id.org/hsu-aut/VDI3682/${fpbVersion}> .\n\n`;
     
     const documentHead = prefixes + ontoDef;
     return documentHead;
@@ -187,17 +187,21 @@ export function createProcessContainers(processContainers: Array<ProcessContaine
         // Add an empty lines after each process operator
         mappedFpbOntology += "\n";
 
-        // Add technical resources and their connection to a processOperator
+        // Add technical resources
         const technicalResources = pC.elementDataInformation.filter(elem => elem.$type == `fpb:TechnicalResource`) as TechnicalResource[];
         technicalResources.forEach(tR => {
             const resourceIri = createIri(tR);
             mappedFpbOntology += `${resourceIri} a VDI3682:TechnicalResource.\n`;
-            tR.isAssignedTo.forEach(assignedOperatorId => {
-                const assignedProcessOperator = findElement(processOperators, assignedOperatorId);
-                const assignedProcessOperatorIri = createIri(assignedProcessOperator);
-                mappedFpbOntology += `${assignedProcessOperatorIri} VDI3682:isAssignedTo ${resourceIri}.\n`;
+        });
+
+        // Add process operator assignments to technical resources
+        processOperators.forEach(pO => {
+            const processOperatorIri = createIri(pO);
+            pO.isAssignedTo.forEach(assignedResourceId => {
+                const assignedResource = findElement(technicalResources, assignedResourceId);
+                const assignedResourceIri = createIri(assignedResource);
+                mappedFpbOntology += `${processOperatorIri} VDI3682:isAssignedTo ${assignedResourceIri}.\n`;
             });
-			
         });
 
         // Create all state elements (i.e., product, energy, information) of this process

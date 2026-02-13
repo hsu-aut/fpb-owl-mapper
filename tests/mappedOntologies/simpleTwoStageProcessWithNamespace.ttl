@@ -1,8 +1,8 @@
-@prefix VDI3682: <http://www.hsu-ifa.de/ontologies/VDI3682#> .
+@prefix VDI3682: <http://www.w3id.org/hsu-aut/VDI3682#> .
 @prefix in: <http://www.just-a-test.com/ontologies#> .
 
 <http://www.just-a-test.com/ontologies/test-onto> rdf:type owl:Ontology ;
-owl:imports <https://raw.githubusercontent.com/hsu-aut/IndustrialStandard-ODP-VDI3682/v3.0.1/VDI3682.owl> .
+owl:imports <http://www.w3id.org/hsu-aut/VDI3682/4.0.1> .
 
 <urn:uuid:cec58f37-5871-46d8-938d-29fdc856302c> a VDI3682:Process.
 in:1 a VDI3682:ProcessOperator.
@@ -30,8 +30,8 @@ in:3 VDI3682:hasInput <urn:uuid:255edf7a-1132-4c5f-9504-d3f88460f5d1>.
 in:3 VDI3682:hasOutput <urn:uuid:bc313958-c9cb-4a37-a77d-43bec79a3eed>.
 
 in:TR2 a VDI3682:TechnicalResource.
-in:2 VDI3682:isAssignedTo in:TR2.
 in:TR3 a VDI3682:TechnicalResource.
+in:2 VDI3682:isAssignedTo in:TR2.
 in:3 VDI3682:isAssignedTo in:TR3.
 <urn:uuid:dddd7425-2cb9-4504-bc2d-5efb706ec7a4> a VDI3682:Product.
 <urn:uuid:bc313958-c9cb-4a37-a77d-43bec79a3eed> a VDI3682:Product.
